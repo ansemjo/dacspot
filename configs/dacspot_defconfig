@@ -53,7 +53,7 @@ BR2_ROOTFS_POST_IMAGE_SCRIPT="$(BR2_EXTERNAL_DACSPOT_PATH)/board/post-image.sh"
 
 # set hostname and banner
 BR2_TARGET_GENERIC_HOSTNAME="dacspot"
-BR2_TARGET_GENERIC_ISSUE="Welcome to DACspot Buildroot"
+BR2_TARGET_GENERIC_ISSUE="Welcome to DACspot Buildroot (\\s \\r, \\v)"
 
 # use the simplest init system
 BR2_INIT_BUSYBOX=y

@@ -58,6 +58,7 @@ Small temporary additions can be made in `output/target/` before rerunning `make
 ### TODO
 
 * [Mount first partition in `/boot`](https://github.com/badaix/snapos/blob/79f5871a138b79981f80f1b4170c3799c62730bf/buildroot-external/board/raspberrypi/common/post-build.sh#L22)
+    + edit existing `/etc/fstab` to fix `/dev/root` line
 * Add actual sound support, Bluetooth config and Raspotify.
 * Add SSH server, just in case?
 * Check other configs for interesing options:
