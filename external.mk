@@ -1,0 +1,3 @@
+write-sdcard:
+	# placeholder command, for now ...
+	dd if=/dev/random of=/dev/null bs=256K count=1 status=progress

@@ -1,0 +1,43 @@
+config DACSPOT_USE_WIRELESS
+  bool "Enable WiFi support"
+  select BR2_PACKAGE_BRCMFMAC_SDIO_FIRMWARE_RPI
+  select BR2_PACKAGE_BRCMFMAC_SDIO_FIRMWARE_RPI_WIFI
+  select BR2_PACKAGE_CRDA
+  select BR2_PACKAGE_IFUPDOWN_SCRIPTS
+  select BR2_PACKAGE_IW
+  select BR2_PACKAGE_WIRELESS_REGDB
+  select BR2_PACKAGE_WIRELESS_TOOLS
+  select BR2_PACKAGE_WPA_SUPPLICANT
+  select BR2_PACKAGE_WPA_SUPPLICANT_NL80211
+  help
+    Select the necessary brcmfmac firmware and wireless tools packages
+    and write a minimal /etc/wpa_supplicant.conf file during build to
+    enable automatically connecting to a WiFi network.
+
+config DACSPOT_USE_WIRELESS_SSID
+  depends on DACSPOT_USE_WIRELESS
+  string "Network SSID"
+
+config DACSPOT_USE_WIRELESS_PSK
+  depends on DACSPOT_USE_WIRELESS
+  string "Network PSK"
+
+config DACSPOT_USE_WIRELESS_COUNTRY
+  depends on DACSPOT_USE_WIRELESS
+  string "Country"
+  default "DE"
+
+
+config DACSPOT_USE_NTP
+  bool "Enable NTP package"
+  select BR2_PACKAGE_NTP
+  select BR2_PACKAGE_NTP_NTPD
+  select BR2_PACKAGE_NTP_NTPDATE
+  help
+    Select the necessary ntp daemon packages and write a config to
+    run ntpdate after boot.
+
+config DACSPOT_USE_NTP_SERVERS
+  depends on DACSPOT_USE_NTP
+  string "NTP Servers"
+  default "0.de.pool.ntp.org"

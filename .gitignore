@@ -2,3 +2,6 @@
 #buildroot-*.tar.*
 buildroot-*/
 dl/
+
+# secret values shouldn't be tracked
+secrets.cfg

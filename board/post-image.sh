@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # modified from buildroot-2023.02/board/raspberrypi/post-image.sh
 
-set -e
+set -eu
 
 BOARD_DIR="$(dirname $0)"
 GENIMAGE_CFG="${BOARD_DIR}/genimage.cfg"
