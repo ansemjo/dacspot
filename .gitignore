@@ -1,0 +1,4 @@
+# ignore the buildroot directories but keep archives
+#buildroot-*.tar.*
+buildroot-*/
+dl/

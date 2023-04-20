@@ -1,0 +1,3 @@
+# build squashfs support into the kernel (instead of a module)
+CONFIG_SQUASHFS=y
+CONFIG_SQUASHFS_ZSTD=y

@@ -1,0 +1,50 @@
+# This file should be set in BR2_PACKAGE_RPI_FIRMWARE_CONFIG_FILE.
+# See http://buildroot.org/manual.html#rootfs-custom
+# and http://elinux.org/RPiconfig for a description of config.txt syntax
+
+start_file=start.elf
+fixup_file=fixup.dat
+kernel=zImage
+
+# Disable overscan assuming the display supports displaying the full resolution
+# If the text shown on the screen disappears off the edge, comment this out
+disable_overscan=1
+
+# Disable the rainbow splash screen and boot without delay
+disable_splash=1
+boot_delay=0
+
+# How much memory in MB to assign to the GPU on Pi models having
+# 256, 512 or 1024 MB total memory
+gpu_mem_256=32
+gpu_mem_512=64
+gpu_mem_1024=256
+
+# fixes rpi (3B, 3B+, 3A+, 4B and Zero W) ttyAMA0 serial console
+dtoverlay=miniuart-bt
+
+# enable autoprobing of Bluetooth driver without need of hciattach/btattach
+dtoverlay=krnbt=on
+
+# Uncomment some or all of these to enable the optional hardware interfaces
+#dtparam=i2c_arm=on
+#dtparam=i2s=on
+#dtparam=spi=on
+
+# Uncomment this to enable infrared communication.
+#dtoverlay=gpio-ir,gpio_pin=17
+#dtoverlay=gpio-ir-tx,gpio_pin=18
+
+# Enable HiFiBerry DAC backpack
+dtoverlay=hifiberry-dac
+
+# Enable Getty on Serial (TODO: not needed for buildroot?)
+#enable_uart=1
+
+# Apply some overclocking
+# https://blog.gc2.at/post/raspberry-pi-zero-hardcore-overclocking/
+arm_freq=1100
+over_voltage=2
+core_freq=500
+sdram_freq=500
+initial_turbo=30
