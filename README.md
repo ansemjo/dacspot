@@ -16,6 +16,8 @@ cd buildroot-2023.02/
 
 ### 2. Apply defconfig configuration fragments
 
+**TODO: this is outdated already ..**
+
 I don't want to track the entire `.config` file because I only made a few changes. So instead I used a support script to merge the in-tree `raspberrypi0w_defconfig` with my configuration fragment:
 
 ```

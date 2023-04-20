@@ -40,6 +40,8 @@ dtoverlay=hifiberry-dac
 
 # Enable Getty on Serial (TODO: not needed for buildroot?)
 #enable_uart=1
+# Enable early serial of firmware
+uart_2ndstage=1
 
 # Apply some overclocking
 # https://blog.gc2.at/post/raspberry-pi-zero-hardcore-overclocking/
