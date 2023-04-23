@@ -37,6 +37,7 @@ dtoverlay=krnbt=on
 
 # Enable HiFiBerry DAC backpack
 dtoverlay=hifiberry-dac
+gpio=25=op,dh
 
 # Enable Getty on Serial (TODO: not needed for buildroot?)
 #enable_uart=1

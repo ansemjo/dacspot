@@ -94,3 +94,4 @@ BR2_PACKAGE_ALSA_LIB=y
 # set this extension's configuration, too
 DACSPOT_USE_WIRELESS=y
 DACSPOT_USE_NTP=y
+DACSPOT_USE_HIFIBERRY_DAC=y

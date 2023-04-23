@@ -23,6 +23,13 @@ tty1::respawn:/sbin/getty -L  tty1 0 vt100 # HDMI console' "${inittab}"
 ::sysinit:/sbin/modprobe brcmfmac' "${inittab}"
   fi
 
+  # load the kernel modules for hifiberry dac sound device
+  if [[ ${DACSPOT_USE_HIFIBERRY_DAC} == y ]]; then
+  grep -qE 'modprobe .* snd_soc_pcm5102a' "${inittab}" || \
+  sed -i '/# now run any rc scripts/i\
+::sysinit:/sbin/modprobe -a snd_soc_bcm2835_i2s snd_soc_pcm5102a snd_soc_rpi_simple_soundcard' "${inittab}"
+  fi
+
 fi
 
 
