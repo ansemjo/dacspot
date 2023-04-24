@@ -62,11 +62,21 @@ fi
 
 
 # write an ntpd config
-if [[ ${DACSPOT_USE_NTP} ]]; then
+if [[ ${DACSPOT_USE_NTP} == y ]]; then
   # /etc/default/ntpd
   mkdir -p "${TARGET_DIR}/etc/default"
   cat >"${TARGET_DIR}/etc/default/ntpd" <<EOF
 NTPDATE=yes
 NTPSERVERS=${DACSPOT_USE_NTP_SERVERS}
 EOF
+fi
+
+
+# add an entry for /boot in fstab
+fstab="${TARGET_DIR}/etc/fstab"
+if [[ ${DACSPOT_MOUNT_BOOT} == y ]]; then
+  mkdir -p "${TARGET_DIR}/boot"
+  ro=$([[ ${DACSPOT_MOUNT_BOOT_RO} == y ]] && echo ",ro")
+  grep -qE '^/dev/mmcblk0p1' "${fstab}" || \
+  echo "/dev/mmcblk0p1 /boot vfat defaults$ro 0 2" >> "$fstab"
 fi
