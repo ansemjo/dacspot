@@ -1,0 +1,59 @@
+config BR2_PACKAGE_LIBRESPOT
+  bool "librespot"
+  depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
+  select BR2_PACKAGE_HOST_RUSTC
+  select BR2_PACKAGE_CA_CERTIFICATES
+  help
+    Open Source Spotify client library
+
+comment "Compilation options"
+  depends on BR2_PACKAGE_LIBRESPOT
+
+config BR2_PACKAGE_LIBRESPOT_VERSION
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "version"
+  default "03b547d3b3b434811225ebc153c651e5f1917b95"
+
+config BR2_PACKAGE_LIBRESPOT_BUILD_OPTS
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "build options"
+  default "--no-default-features --features alsa-backend"
+
+# TODO: use these to actually write a config file / service
+comment "Configuration variables"
+  depends on BR2_PACKAGE_LIBRESPOT
+
+config BR2_PACKAGE_LIBRESPOT_CONF_NAME
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "name"
+  default "DACspot Player"
+
+config BR2_PACKAGE_LIBRESPOT_CONF_TYPE
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "device type"
+  default "avr"
+
+config BR2_PACKAGE_LIBRESPOT_CONF_AUTOPLAY
+  depends on BR2_PACKAGE_LIBRESPOT
+  bool "autoplay"
+  default "y"
+
+config BR2_PACKAGE_LIBRESPOT_CONF_BITRATE
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "bitrate"
+  default "160"
+
+config BR2_PACKAGE_LIBRESPOT_CONF_VOLUME
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "volume control"
+  default "log"
+
+config BR2_PACKAGE_LIBRESPOT_CONF_USERNAME
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "spotify username"
+  default ""
+
+config BR2_PACKAGE_LIBRESPOT_CONF_PASSWORD
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "spotify password"
+  default ""

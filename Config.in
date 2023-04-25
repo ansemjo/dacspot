@@ -65,3 +65,7 @@ config DACSPOT_MOUNT_BOOT_RO
   depends on DACSPOT_MOUNT_BOOT
   bool "Mount /boot read-only"
   default "y"
+
+
+# packages
+source "$BR2_EXTERNAL_DACSPOT_PATH/package/librespot/Config.in"

@@ -1,3 +1,5 @@
+include $(sort $(wildcard $(BR2_EXTERNAL_DACSPOT_PATH)/package/*/*.mk))
+
 # Write the generated image to SD card in my UGREEN reader.
 write-sdcard:
 	sudo dd if=$(BINARIES_DIR)/sdcard.img of=/dev/disk/by-id/usb-Generic_MassStorageClass_000000001538-0:1 bs=256K status=progress
