@@ -10,6 +10,8 @@ PIDFILE="/var/run/$DAEMON.pid"
 [ -r "/etc/default/$DAEMON" ] && . "/etc/default/$DAEMON"
 
 start() {
+  printf 'Waiting for device to come online ...'
+  while ! ip addr | grep 'inet ' | grep -v '127.0.0.1' >/dev/null; do sleep 1; done
 	printf 'Starting %s: ' "$DAEMON"
 	# shellcheck disable=SC2086 # we need the word splitting
 	start-stop-daemon -S -q -p "$PIDFILE" -m -b -x "/usr/bin/$DAEMON"
