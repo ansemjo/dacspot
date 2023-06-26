@@ -14,7 +14,7 @@ if [[ -e ${inittab} ]]; then
   # add a console on tty1
   grep -qE '^tty1::' "${inittab}" || \
   sed -i '/GENERIC_SERIAL/a\
-tty1::respawn:/sbin/getty -L  tty1 0 vt100 # HDMI console' "${inittab}"
+tty1::respawn:/sbin/getty    -L      tty1 0 vt100 # HDMI console' "${inittab}"
 
   # load the kernel module for wifi
   if [[ ${BR2_PACKAGE_BRCMFMAC_SDIO_FIRMWARE_RPI} == y ]]; then
@@ -28,6 +28,16 @@ tty1::respawn:/sbin/getty -L  tty1 0 vt100 # HDMI console' "${inittab}"
   grep -qE 'modprobe .* snd_soc_pcm5102a' "${inittab}" || \
   sed -i '/# now run any rc scripts/i\
 ::sysinit:/sbin/modprobe -a snd_soc_bcm2835_i2s snd_soc_pcm5102a snd_soc_rpi_simple_soundcard' "${inittab}"
+  fi
+
+  # load the kernel modules and start a getty for serial on usb otg port
+  if [[ ${DACSPOT_USE_USB_GSERIAL} == y ]]; then
+  grep -qE 'modprobe .* dwc2' "${inittab}" || \
+  sed -i '/# now run any rc scripts/i\
+::sysinit:/sbin/modprobe -a dwc2 g_serial' "${inittab}"
+  grep -qE '^ttyGS0::' "${inittab}" || \
+  sed -i '/GENERIC_SERIAL/a\
+ttyGS0::respawn:/sbin/getty  -L   ttyGS0 0 vt100 # USB gadget' "${inittab}"
   fi
 
 fi

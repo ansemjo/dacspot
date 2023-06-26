@@ -54,6 +54,14 @@ config DACSPOT_USE_HIFIBERRY_DAC
   select BR2_PACKAGE_ALSA_LIB
 
 
+config DACSPOT_USE_USB_GSERIAL
+  bool "Enable g_serial on the USB OTG port"
+  default "y"
+  help
+    Use the DesignWare USB2 DRD Core Support (dwc2) and load the
+    USB Serial Gadget module (g_serial) to use the USB OTG port for
+    an easy-to-access serial console.
+
 config DACSPOT_MOUNT_BOOT
   bool "Mount /boot partition"
   default "y"
