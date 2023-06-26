@@ -82,6 +82,28 @@ EOF
 fi
 
 
+# write authorized ssh key and generate host identity
+if [[ -n ${DACSPOT_SSH_AUTHORIZED_KEY} ]]; then
+  # /root/.ssh/authorized_keys
+  mkdir -p "${TARGET_DIR}/root/.ssh/"
+  echo -e "${DACSPOT_SSH_AUTHORIZED_KEY}" >"${TARGET_DIR}/root/.ssh/authorized_keys"
+  chmod 700 "${TARGET_DIR}/root/.ssh/"
+  chmod 644 "${TARGET_DIR}/root/.ssh/authorized_keys"
+fi
+
+# generate a host identity, if none exists
+if [[ ${DACSPOT_SSH_GENERATE_ED25519_HOSTKEY} == y ]]; then
+  # /etc/ssh/ssh_host_ed25519_key
+  if [[ -f "${TARGET_DIR}/etc/ssh/ssh_host_ed25519_key" ]]; then
+    echo "key exists, skipping hostkey generation" >&2
+  else
+    ssh-keygen -t ed25519 -C "${BR2_TARGET_GENERIC_HOSTNAME}" -N '' \
+      -f "${TARGET_DIR}/etc/ssh/ssh_host_ed25519_key";
+  fi
+  chmod 600 "${TARGET_DIR}/etc/ssh/ssh_host_ed25519_key";
+fi
+
+
 # add an entry for /boot in fstab
 fstab="${TARGET_DIR}/etc/fstab"
 if [[ ${DACSPOT_MOUNT_BOOT} == y ]]; then

@@ -62,6 +62,25 @@ config DACSPOT_USE_USB_GSERIAL
     USB Serial Gadget module (g_serial) to use the USB OTG port for
     an easy-to-access serial console.
 
+
+config DACSPOT_SSH_AUTHORIZED_KEY
+  depends on BR2_PACKAGE_OPENSSH_SERVER
+  string "Authorized key for root"
+  default ""
+  help
+     Add this public key as an authorized key for the root user
+     to enable passwordless login.
+
+config DACSPOT_SSH_GENERATE_ED25519_HOSTKEY
+  depends on BR2_PACKAGE_OPENSSH_SERVER
+  bool "Generate ed25519 hostkey"
+  default "y"
+  help
+    Generate an ed25519 host key, if none exists in the generated
+    target filesystem. Especially useful for readonly filesystem, as
+    the server won't start due to missing keys otherwise.
+
+
 config DACSPOT_MOUNT_BOOT
   bool "Mount /boot partition"
   default "y"
