@@ -3,6 +3,9 @@
 
 set -eu
 
+# load buildroot config (without makefile variable syntax values)
+source <(grep -v '\$\(.\+\)' "${BR2_CONFIG}")
+
 BOARD_DIR="$(dirname $0)"
 GENIMAGE_CFG="${BOARD_DIR}/genimage.cfg"
 GENIMAGE_TMP="${BUILD_DIR}/genimage.tmp"
@@ -17,11 +20,21 @@ ROOTPATH_TMP="$(mktemp -d)"
 
 rm -rf "${GENIMAGE_TMP}"
 
+# configure the genimage.cfg with selected rootfs
+rootfs="ext4"
+if [[ ${DACSPOT_USE_SQUASHFS_ROOT:-n} == y ]]; then
+	rootfs="squashfs"
+fi
+
+# uncomment selected rootfs line
+sed "s/#${rootfs}: //" "${GENIMAGE_CFG}" > "${BUILD_DIR}/genimage.cfg"
+
+
 genimage \
 	--rootpath "${ROOTPATH_TMP}"   \
 	--tmppath "${GENIMAGE_TMP}"    \
 	--inputpath "${BINARIES_DIR}"  \
 	--outputpath "${BINARIES_DIR}" \
-	--config "${GENIMAGE_CFG}"
+	--config "${BUILD_DIR}/genimage.cfg"
 
 exit $?

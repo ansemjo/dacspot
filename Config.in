@@ -81,9 +81,16 @@ config DACSPOT_SSH_GENERATE_ED25519_HOSTKEY
     the server won't start due to missing keys otherwise.
 
 
+config DACSPOT_USE_SQUASHFS_ROOT
+  depends on BR2_TARGET_ROOTFS_SQUASHFS
+  bool "Use readonly SquashFS root"
+  default "y"
+  help
+    Generate image using the readonly SquashFS rootfs.
+
 config DACSPOT_MOUNT_BOOT
   bool "Mount /boot partition"
-  default "y"
+  default "n"
   help
     Mount the second partiton of the SD card (with the kernel
     image and bootloader configuration) at /boot.
