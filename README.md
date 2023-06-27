@@ -57,16 +57,8 @@ Small temporary additions can be made in `output/target/` before rerunning `make
 
 ### TODO
 
-* [Mount first partition in `/boot`](https://github.com/badaix/snapos/blob/79f5871a138b79981f80f1b4170c3799c62730bf/buildroot-external/board/raspberrypi/common/post-build.sh#L22)
-    + edit existing `/etc/fstab` to fix `/dev/root` line
-* Add actual sound support, Bluetooth config and Raspotify.
-* Add SSH server, just in case?
-* Check other configs for interesing options:
-  * https://github.com/sirsipe/buildroot-externals/blob/main/configs/rpi0w-uav_defconfig
-  * https://github.com/badaix/snapos/blob/master/buildroot-external/configs/snapos_rpi_defconfig
-
-* Maybe even add [Snapcast](https://github.com/badaix/snapos) itself?
-* [Check out `rpi-audio-receiver`](https://github.com/nicokaiser/rpi-audio-receiver)
+* Bluetooth receiver support
+* Maybe add [Snapcast](https://github.com/badaix/snapos)
 
 ### Sources
 
