@@ -21,16 +21,15 @@ define LIBRESPOT_INSTALL_INIT_SYSV
 	echo "export LIBRESPOT_DEVICE_TYPE=\"$(BR2_PACKAGE_LIBRESPOT_CONF_DEVICE_TYPE)\"" >> $(TARGET_DIR)/etc/default/librespot
 	echo "export LIBRESPOT_USERNAME=\"$(BR2_PACKAGE_LIBRESPOT_CONF_USERNAME)\"" >> $(TARGET_DIR)/etc/default/librespot
 	echo "export LIBRESPOT_PASSWORD=\"$(BR2_PACKAGE_LIBRESPOT_CONF_PASSWORD)\"" >> $(TARGET_DIR)/etc/default/librespot
+	echo "export LIBRESPOT_CACHE=\"/tmp/librespot\"" >> $(TARGET_DIR)/etc/default/librespot
 	if [[ x$(BR2_PACKAGE_LIBRESPOT_CONF_DISABLE_DISCOVERY) == xy ]]; then \
 		echo "export LIBRESPOT_DISABLE_DISCOVERY=\"on\"" >> $(TARGET_DIR)/etc/default/librespot; \
 	fi
 	if [[ x$(BR2_PACKAGE_LIBRESPOT_CONF_AUTOPLAY) == xy ]]; then \
 		echo "export LIBRESPOT_AUTOPLAY=\"on\"" >> $(TARGET_DIR)/etc/default/librespot; \
 	fi
-	echo "export LIBRESPOT_CACHE=\"$(BR2_PACKAGE_LIBRESPOT_CONF_CACHE)\"" >> $(TARGET_DIR)/etc/default/librespot
 	echo "export LIBRESPOT_VOLUME_CTRL=\"$(BR2_PACKAGE_LIBRESPOT_CONF_VOLUME_CTRL)\"" >> $(TARGET_DIR)/etc/default/librespot
 	echo "export LIBRESPOT_BITRATE=\"$(BR2_PACKAGE_LIBRESPOT_CONF_BITRATE)\"" >> $(TARGET_DIR)/etc/default/librespot
-	echo "export LIBRESPOT_FORMAT=\"$(BR2_PACKAGE_LIBRESPOT_CONF_FORMAT)\"" >> $(TARGET_DIR)/etc/default/librespot
 
 endef
 

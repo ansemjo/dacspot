@@ -69,13 +69,6 @@ config BR2_PACKAGE_LIBRESPOT_CONF_AUTOPLAY
   help
     Automatically play similar songs when your playlist ends.
 
-config BR2_PACKAGE_LIBRESPOT_CONF_CACHE
-  depends on BR2_PACKAGE_LIBRESPOT
-  string "Cache directory"
-  default "/tmp/librespot"
-  help
-    Cache directory for credentials and audio files.
-
 config BR2_PACKAGE_LIBRESPOT_CONF_VOLUME_CTRL
   depends on BR2_PACKAGE_LIBRESPOT
   string "Volume control"
@@ -89,10 +82,3 @@ config BR2_PACKAGE_LIBRESPOT_CONF_BITRATE
   default "160"
   help
     Choose the bitrate in kbps from 96, 160 or 320.
-
-config BR2_PACKAGE_LIBRESPOT_CONF_FORMAT
-  depends on BR2_PACKAGE_LIBRESPOT
-  string "Audio Format"
-  default "S16"
-  help
-    Choose the output format from F64, F32, S32, S24, S24_3 or S16.
