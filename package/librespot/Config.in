@@ -12,7 +12,7 @@ comment "Compilation options"
 config BR2_PACKAGE_LIBRESPOT_VERSION
   depends on BR2_PACKAGE_LIBRESPOT
   string "version"
-  default "03b547d3b3b434811225ebc153c651e5f1917b95"
+  default "dev"
 
 config BR2_PACKAGE_LIBRESPOT_BUILD_OPTS
   depends on BR2_PACKAGE_LIBRESPOT
