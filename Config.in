@@ -88,6 +88,18 @@ config DACSPOT_USE_SQUASHFS_ROOT
   help
     Generate image using the readonly SquashFS rootfs.
 
+config BR2_TARGET_GENERIC_REMOUNT_ROOTFS_RW
+  bool "Remount root filesystem read-write"
+  depends on !DACSPOT_USE_SQUASHFS_ROOT
+  default "y"
+  help
+    The root filesystem is typically mounted read-only at boot.
+    By default, buildroot remounts it in read-write mode early
+    during the boot process.
+    Say no here if you would rather like your root filesystem to
+    remain read-only.
+    If unsure, say Y.
+
 config DACSPOT_MOUNT_BOOT
   bool "Mount /boot partition"
   default "n"
