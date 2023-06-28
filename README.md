@@ -66,12 +66,27 @@ The post-scripts and genimage config in `board/` have been copied and modified f
 
 Small temporary additions can be made in `output/target/` before rerunning `make`. Be aware that the post-scripts may overwrite your changes though.
 
+## Features
+
+Just a random list of features that this image provides:
+
+* Obviously, target the Raspberry Pi Zero W with a HiFiBerry DAC (or compatible) sound card. The `config.txt` applies some overclocking.
+* Automatically connects to WiFi on boot and fetches the current time via NTP.
+* Boots from a readonly SquashFS filesystem with a minimal init system based on the default Busybox init. The Pi boots in under 20 seconds until it appears as a device in my Spotify account.
+* Configures the USB port as a `g_serial` serial device, so you can debug the Pi without an external adapter. It appears as something like `/dev/ttyACM0` on your host device after it is done booting.
+* Provides a workable ALSA configuration `asound.conf`. This was probably the hardest part to get a configuration that would not stutter due to constant buffer underruns.
+* Librespot is provided as an external `cargo-package` for Buildroot. By default it is built from the latest commit [in the `dev` branch](https://github.com/librespot-org/librespot/tree/dev).
+* The makefile adds an `emulate` target to run the generated image with QEMU. This won't quite work due to missing WiFi of course (because the Librespot init waits for any network to come online, so you never reach the console) but shows how you could run the image in a virtual machine for faster development.
+
 ### TODO
 
+These are things I'd maybe like to add later:
+
 * Bluetooth receiver support
+* Mount a writable data partition somewhere to store volume settings etc.
 * Maybe add [Snapcast](https://github.com/badaix/snapos)
 
-### Sources
+## Sources
 
 * [The Buildroot Manual](https://buildroot.org/downloads/manual/manual.html)
 * [Note on using `support/kconfig/merge_config.sh`](https://stackoverflow.com/a/72864457)
