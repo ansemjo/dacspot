@@ -19,8 +19,7 @@ define LIBRESPOT_INSTALL_INIT_SYSV
 	echo "# librespot configuration" > $(TARGET_DIR)/etc/default/librespot
 	echo "export LIBRESPOT_NAME=\"$(BR2_PACKAGE_LIBRESPOT_CONF_NAME)\"" >> $(TARGET_DIR)/etc/default/librespot
 	echo "export LIBRESPOT_DEVICE_TYPE=\"$(BR2_PACKAGE_LIBRESPOT_CONF_DEVICE_TYPE)\"" >> $(TARGET_DIR)/etc/default/librespot
-	echo "export LIBRESPOT_USERNAME=\"$(BR2_PACKAGE_LIBRESPOT_CONF_USERNAME)\"" >> $(TARGET_DIR)/etc/default/librespot
-	echo "export LIBRESPOT_PASSWORD=\"$(BR2_PACKAGE_LIBRESPOT_CONF_PASSWORD)\"" >> $(TARGET_DIR)/etc/default/librespot
+	echo "export LIBRESPOT_SYSTEM_CACHE=\"$(BR2_PACKAGE_LIBRESPOT_CONF_SYSTEM_CACHE)\"" >> $(TARGET_DIR)/etc/default/librespot
 	echo "export LIBRESPOT_CACHE=\"/tmp/librespot\"" >> $(TARGET_DIR)/etc/default/librespot
 	if [[ x$(BR2_PACKAGE_LIBRESPOT_CONF_DISABLE_DISCOVERY) == xy ]]; then \
 		echo "export LIBRESPOT_DISABLE_DISCOVERY=\"on\"" >> $(TARGET_DIR)/etc/default/librespot; \

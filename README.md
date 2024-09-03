@@ -45,10 +45,12 @@ Want to add something? Now's the time. If you didn't populate all necessary secr
 make menuconfig
 ```
 
+(If you get an error about `ncurses` when you're sure you do have it, you might need to [fix the detection script](https://stackoverflow.com/a/78545186).)
+
 Most of the options in this overlay should have a useful help message. But there's two credentials that you **need** to populate after applying the defaults:
 
 * The WiFi assumes a simple WPA2-secured network and requires you to specify the SSID `DACSPOT_USE_WIRELESS_SSID` and preshared key `DACSPOT_USE_WIRELESS_PSK`.
-* Librespot needs a Spotify login to work correctly, so populate your username `BR2_PACKAGE_LIBRESPOT_CONF_USERNAME` and password `BR2_PACKAGE_LIBRESPOT_CONF_PASSWORD`.
+* Spotify [removed the username + password authentication](https://github.com/librespot-org/librespot/issues/1308), so you need to generate a `credentials.json`, configure `BR2_PACKAGE_LIBRESPOT_CONF_SYSTEM_CACHE` to some directory and put the credentials in the appropriate `rootfs/` folder to include it in the image.
 
 If you made other significant changes, run `make savedefconfig` and try to merge the new options in the existing `dacspot_defconfig` for later.
 

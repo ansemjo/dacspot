@@ -40,19 +40,12 @@ config BR2_PACKAGE_LIBRESPOT_CONF_DEVICE_TYPE
     computer, tablet, tv, avr, stb, audiodongle, gameconsole, castaudio, castvideo,
     automobile, smartwatch, chromebook, carthing, homething
 
-config BR2_PACKAGE_LIBRESPOT_CONF_USERNAME
+config BR2_PACKAGE_LIBRESPOT_CONF_SYSTEM_CACHE
   depends on BR2_PACKAGE_LIBRESPOT
-  string "Username"
-  default ""
+  string "System cache directory"
+  default "/etc/spotify"
   help
-    Your Spotify account login.
-
-config BR2_PACKAGE_LIBRESPOT_CONF_PASSWORD
-  depends on BR2_PACKAGE_LIBRESPOT
-  string "Password"
-  default ""
-  help
-    Your Spotify account password.
+    Path to a directory with system files, e.g. credentials.json and volume config.
 
 config BR2_PACKAGE_LIBRESPOT_CONF_DISABLE_DISCOVERY
   depends on BR2_PACKAGE_LIBRESPOT

@@ -5,6 +5,7 @@ dl/
 
 # secret values shouldn't be tracked
 secrets.cfg
+credentials.json
 
 # neither should ssh keys in rootfs
 rootfs/etc/ssh/ssh_host_*
