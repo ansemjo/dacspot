@@ -108,7 +108,7 @@ fi
 fstab="${TARGET_DIR}/etc/fstab"
 if [[ ${DACSPOT_MOUNT_BOOT:-n} == y ]]; then
   mkdir -p "${TARGET_DIR}/boot"
-  ro=$([[ ${DACSPOT_MOUNT_BOOT_RO:-n} == y ]] && echo ",ro")
+  ro=$([[ ${DACSPOT_MOUNT_BOOT_RO:-n} == y ]] && echo ",ro" || true)
   grep -qE '^/dev/mmcblk0p1' "${fstab}" || \
   echo "/dev/mmcblk0p1 /boot vfat defaults$ro 0 2" >> "$fstab"
 fi
