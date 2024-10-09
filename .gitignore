@@ -3,6 +3,9 @@
 buildroot-*/
 dl/
 
+# ignore build sdcard images in toplevel
+/sdcard*.img
+
 # secret values shouldn't be tracked
 secrets.cfg
 credentials.json
