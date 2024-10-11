@@ -15,6 +15,7 @@ tar xf "$br.tar.gz"
 # enter buildroot release and apply defconfig
 cd "$br/"
 make BR2_EXTERNAL=../ dacspot_defconfig
+make patch-bindgen-version
 ./support/kconfig/merge_config.sh .config ../secrets.cfg
 
 # give the chance to interrupt for manual build

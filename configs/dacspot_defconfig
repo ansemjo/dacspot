@@ -110,10 +110,6 @@ DACSPOT_USE_SQUASHFS_ROOT=y
 # DACSPOT_MOUNT_BOOT is not set
 BR2_PACKAGE_LIBRESPOT=y
 
-# TODO: pin librespot version due to failing build of aws-lc-rs dependency
-# https://github.com/librespot-org/librespot/issues/1368
-BR2_PACKAGE_LIBRESPOT_VERSION=2ea7436e60750d56e747abfca3893be39c0162fd
-
 # a few more useful packages
 BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 BR2_PACKAGE_HAVEGED=y
