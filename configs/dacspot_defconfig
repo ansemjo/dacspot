@@ -4,9 +4,9 @@ BR2_arm1176jzf_s=y
 BR2_ARM_EABIHF=y
 
 # general build optimizations
-BR2_CCACHE=y
+#BR2_CCACHE=y
 BR2_OPTIMIZE_2=y
-BR2_ENABLE_LTO=y
+#BR2_ENABLE_LTO=y
 
 # stronger security hardening
 #BR2_SSP_ALL=y
@@ -115,4 +115,8 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 BR2_PACKAGE_HAVEGED=y
 BR2_PACKAGE_OPENSSH=y
 BR2_PACKAGE_HTOP=y
+
+# TODO: attempt to enable systemd init
+BR2_INIT_SYSTEMD=y
+BR2_INIT_SYSTEMD_VAR_OVERLAYFS=y
 

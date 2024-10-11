@@ -1,0 +1,7 @@
+
+docker run --rm -it -v (pwd):/dacspot -w /dacspot debian:12
+
+$ apt update && apt install -y \
+    build-essential cpio rsync unzip bc findutils curl ca-certificates wget ncurses-dev file git
+
+$ ./rebuild.sh
