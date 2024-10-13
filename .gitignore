@@ -12,3 +12,5 @@ credentials.json
 
 # neither should ssh keys in rootfs
 rootfs/etc/ssh/ssh_host_*
+rootfs/root/.ssh/id_*
+rootfs/root/.ssh/authorized_keys

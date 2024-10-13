@@ -86,7 +86,12 @@ fi
 if [[ -n ${DACSPOT_SSH_AUTHORIZED_KEY} ]]; then
   # /root/.ssh/authorized_keys
   mkdir -p "${TARGET_DIR}/root/.ssh/"
-  echo -e "${DACSPOT_SSH_AUTHORIZED_KEY}" >"${TARGET_DIR}/root/.ssh/authorized_keys"
+  # don't write if there is a file already
+  if [[ -f "${TARGET_DIR}/root/.ssh/authorized_keys" ]]; then
+    echo "authorized_keys exists, skipping writing anew"
+  else
+    echo -e "${DACSPOT_SSH_AUTHORIZED_KEY}" >"${TARGET_DIR}/root/.ssh/authorized_keys"
+  fi
   chmod 700 "${TARGET_DIR}/root/.ssh/"
   chmod 644 "${TARGET_DIR}/root/.ssh/authorized_keys"
 fi
