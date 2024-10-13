@@ -6,22 +6,46 @@ start_file=start.elf
 fixup_file=fixup.dat
 kernel=zImage
 
-# Disable overscan assuming the display supports displaying the full resolution
-# If the text shown on the screen disappears off the edge, comment this out
+# enable early serial console during boot
+uart_2ndstage=1
+#enable_uart=1
+#start_debug=1
+
+# enable serial on micro usb
+dtoverlay=dwc2
+# fixes rpi (3B, 3B+, 3A+, 4B and Zero W) ttyAMA0 serial console
+dtoverlay=miniuart-bt
+
+# disable autodetection as far as possible
+camera_auto_detect=0
+display_auto_detect=0
+disable_poe_fan=1
+force_eeprom_read=0
+ignore_lcd=1
+disable_touchscreen=1
+
+# disable gpu and video out
+dtoverlay=vc4-kms-v3d,nohdmi
+max_framebuffers=1
+disable_fw_kms_setup=1
 disable_overscan=1
+
+# don't try to read HDMI eeprom
+hdmi_blanking=2
+hdmi_ignore_edid=0xa5000080
+hdmi_ignore_cec_init=1
+hdmi_ignore_cec=1
 
 # Disable the rainbow splash screen and boot without delay
 disable_splash=1
 boot_delay=0
+bootcode_delay=0
 
 # How much memory in MB to assign to the GPU on Pi models having
 # 256, 512 or 1024 MB total memory
 gpu_mem_256=32
 gpu_mem_512=64
 gpu_mem_1024=256
-
-# fixes rpi (3B, 3B+, 3A+, 4B and Zero W) ttyAMA0 serial console
-dtoverlay=miniuart-bt
 
 # enable autoprobing of Bluetooth driver without need of hciattach/btattach
 dtoverlay=krnbt=on
@@ -31,23 +55,11 @@ dtoverlay=krnbt=on
 #dtparam=i2s=on
 #dtparam=spi=on
 
-# Uncomment this to enable infrared communication.
-#dtoverlay=gpio-ir,gpio_pin=17
-#dtoverlay=gpio-ir-tx,gpio_pin=18
-
-# Enable HiFiBerry DAC backpack
+# enable HiFiBerry DAC backpack
 dtoverlay=hifiberry-dac
 gpio=25=op,dh
 
-# Enable Getty on Serial (TODO: not needed for buildroot?)
-#enable_uart=1
-# Enable early serial of firmware
-uart_2ndstage=1
-
-# enable serial on micro usb
-dtoverlay=dwc2
-
-# Apply some overclocking
+# apply some overclocking
 # https://blog.gc2.at/post/raspberry-pi-zero-hardcore-overclocking/
 arm_freq=1100
 over_voltage=2
