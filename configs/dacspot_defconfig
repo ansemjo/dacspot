@@ -8,6 +8,9 @@ BR2_CCACHE=y
 BR2_OPTIMIZE_2=y
 BR2_ENABLE_LTO=y
 
+# keep downloads in dacspot dir for multiple runs
+BR2_DL_DIR="$(BR2_EXTERNAL_DACSPOT_PATH)/dl"
+
 # stronger security hardening
 #BR2_SSP_ALL=y
 #BR2_SSP_OPTION="-fstack-protector-all"
