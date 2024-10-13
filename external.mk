@@ -8,7 +8,7 @@ patch-bindgen-version:
 
 # Copy the generated image to the external dir.
 save-image:
-	cp $(BINARIES_DIR)/sdcard.img $(BR2_EXTERNAL_DACSPOT_PATH)/sdcard-$$(date +%FT%T%T --utc).img
+	cp $(BINARIES_DIR)/sdcard.img $(BR2_EXTERNAL_DACSPOT_PATH)/sdcard-$$(date +%FT%H%M%S%Z --utc).img
 
 # Run the generated image in a virtual machine with QEMU.
 # https://gitlab.com/qemu-project/qemu/-/issues/448#note_726580305
