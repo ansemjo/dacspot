@@ -14,7 +14,9 @@ FROM debian:12
 RUN apt update && apt install -y \
     build-essential git cvs bzr mercurial subversion \
     wget curl ca-certificates rsync unzip cpio bc \
-    findutils file ncurses-dev
+    findutils file ncurses-dev clang gcc-multilib
+# RUN dpkg --add-architecture i386 && \
+#     apt install -y libc6:i386
 
 # use a nicer shell as default
 RUN apt install -y fish && chsh -s /usr/bin/fish
